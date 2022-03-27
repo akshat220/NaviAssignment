@@ -1,5 +1,6 @@
-package com.example.assignment
+package com.example.assignment.rest
 
+import com.example.assignment.model.PrDataResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

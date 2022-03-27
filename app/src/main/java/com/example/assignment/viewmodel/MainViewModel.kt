@@ -1,10 +1,12 @@
-package com.example.assignment
+package com.example.assignment.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.assignment.model.PrDataResponse
+import com.example.assignment.rest.MainRepository
 import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
