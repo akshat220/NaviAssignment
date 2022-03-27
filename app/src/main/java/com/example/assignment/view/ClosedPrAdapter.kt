@@ -1,11 +1,13 @@
-package com.example.assignment
+package com.example.assignment.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.assignment.R
 import com.example.assignment.databinding.PrItemBinding
+import com.example.assignment.model.PrDataResponse
 
 class ClosedPrAdapter(private var list: List<PrDataResponse> = emptyList()): RecyclerView.Adapter<ClosedPrAdapter.ViewHolder>() {
 

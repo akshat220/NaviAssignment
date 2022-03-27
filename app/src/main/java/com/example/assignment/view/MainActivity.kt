@@ -1,4 +1,4 @@
-package com.example.assignment
+package com.example.assignment.view
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.assignment.viewmodel.MainViewModel
+import com.example.assignment.viewmodel.ViewState
 import com.example.assignment.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
