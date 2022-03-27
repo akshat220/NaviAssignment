@@ -26,6 +26,7 @@ object MainRepository {
            }
 
            override fun onFailure(call: Call<List<PrDataResponse>>, t: Throwable) {
+               Log.d("DataResponse", t.toString())
                call.cancel()
            }
        })
