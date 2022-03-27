@@ -1,5 +1,6 @@
 package com.example.assignment
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,26 +12,25 @@ class MainViewModel: ViewModel() {
     private val _submitDetailLiveData = MutableLiveData<ViewState>()
     val submitDetailLiveData: LiveData<ViewState> = _submitDetailLiveData
 
-    fun submitDetails() {
+    fun getPrDetails() {
         _submitDetailLiveData.value = ViewState.Loading
         viewModelScope.launch {
-            val submitText = MainRepository.submitData()
-            _submitDetailLiveData.value = ViewState.SubmitSuccessful(submitText)
+            val result = MainRepository.getPrDetails()
+            Log.d("DataResponse", result.toString())
+            when {
+                result.isNullOrEmpty() -> {
+                    _submitDetailLiveData.value = ViewState.Error("Something Went Wrong")
+                }
+                else -> {
+                    _submitDetailLiveData.value = ViewState.Success(result)
+                }
+            }
         }
-    }
-
-    fun validateData(pan: String?, day: String?, month: String?, year: String?) {
-        if (pan.isNullOrEmpty() || day.isNullOrEmpty() || month.isNullOrEmpty() || year.isNullOrEmpty()) {
-            _submitDetailLiveData.value = ViewState.ActivateButton(false)
-            return
-        }
-        val boolean = (pan.length == 10) && (day.toInt() <= 31) && (month.toInt() <= 12) && (year.toInt() <= 2022)
-        _submitDetailLiveData.value = ViewState.ActivateButton(boolean)
     }
 }
 
 sealed class ViewState {
     object Loading: ViewState()
-    data class SubmitSuccessful(val submitText: String): ViewState()
-    data class ActivateButton(val boolean: Boolean): ViewState()
+    data class Error(val error: String): ViewState()
+    data class Success(val data: List<PrDataResponse>): ViewState()
 }
