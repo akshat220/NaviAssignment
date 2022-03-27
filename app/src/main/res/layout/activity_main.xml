@@ -1,35 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="true"
-    android:paddingHorizontal="20dp"
-    android:paddingVertical="20dp">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ProgressBar
+        android:id="@+id/progress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:alpha=".9"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:padding="150dp"
+        android:visibility="invisible" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/topImage"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:src="@mipmap/fi_icon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:clipToPadding="true"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="20dp"
+        app:layout_constraintBottom_toTopOf="@id/tvConsent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:textColor="@color/full_black"
-            android:textSize="24sp"
-            app:layout_constraintTop_toBottomOf="@id/topImage"
-            tools:text="First of Few Steps" />
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/topImage"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@mipmap/fi_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.core.widget.NestedScrollView>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/avenir600"
+                android:textColor="@color/full_black"
+                android:textSize="24sp"
+                app:layout_constraintTop_toBottomOf="@id/topImage"
+                tools:text="First of Few Steps" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPanHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/avenir600"
+                android:text="Pan"
+                android:textColor="@color/grey"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/tvHeading" />
+
+            <EditText
+                android:id="@+id/etPan"
+                style="@style/MyEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="qwertyuiopasdfghjklzxcvbnm1234567890"
+                android:hint="Enter Pan"
+                android:importantForAutofill="no"
+                android:maxLength="10"
+                android:textColor="@color/full_black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/tvPanHeading"
+                tools:text="addddcc" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/avenir600"
+                android:text="Birthdate"
+                android:textColor="@color/grey"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/etPan" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/etDay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_background_normal"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/full_black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/etMonth"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDob" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/etMonth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/full_black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/etYear"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintStart_toEndOf="@id/etDay"
+                app:layout_constraintTop_toBottomOf="@id/tvDob" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/etYear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_background_normal"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/full_black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_weight="2"
+                app:layout_constraintStart_toEndOf="@id/etMonth"
+                app:layout_constraintTop_toBottomOf="@id/tvDob"
+                tools:text="1999" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvConsent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/avenir500"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/buttonPrimary"
+        tools:text="Pan ...... ........ ....." />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:backgroundTint="@color/purple_500"
+        android:fontFamily="@font/avenir600"
+        android:padding="10dp"
+        android:text="NEXT"
+        app:layout_constraintBottom_toTopOf="@id/buttonSecondary" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/buttonSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/avenir500"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="I don't have pan"
+        android:textColor="@color/purple_500"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
